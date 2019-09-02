@@ -55,6 +55,7 @@ label {
 
 input[type='number'] {
   border: 1px solid #cccccc;
+  width: 65px;
   padding: 5px;
   font-size: 16px;
   border-radius: 2px; }
@@ -232,7 +233,7 @@ input[type='number'] {
 input[type='range'] {
   height: 26px;
   -webkit-appearance: none;
-  margin: 10px 0;
+  margin: 0 0 10px;
   width: 100%;
   background-color: transparent; }
 

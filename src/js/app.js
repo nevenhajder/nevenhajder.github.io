@@ -12,25 +12,24 @@ class MarbleMachine {
         this.errorMessage = document.querySelector('.js-errorMessage');
         this.resultMessage = document.querySelector('.js-resultMessage');
         this.marbleContainer = document.querySelector('.js-marbleContainer');
-
         this.marbleStyle = document.querySelector('.js-marbleStyle');
         this.displayOrientation = document.querySelector('.js-displayOrientation');
 
-        this.configToggle.addEventListener('click', () => this.toggleConfig());
 
-        this.slider.addEventListener('change', (e) => {
-            this.marbleContainer.attributes['data-marblesize'].value = e.target.value;
-        });
-
-        this.btnGenerate.addEventListener('click', () => this.generateMarbles());
+        // Events
         this.numField.addEventListener('keyup', (e) => {
             if (e.keyCode === 13) {
                 this.generateMarbles();
             }
         });
+        this.btnGenerate.addEventListener('click', () => this.generateMarbles());
 
+        this.configToggle.addEventListener('click', () => this.toggleConfig());
+        this.slider.addEventListener('change', (e) => (this.marbleContainer.attributes['data-marblesize'].value = e.target.value));
         this.marbleStyle.addEventListener('change', (e) => this.updateMarbleStyle(e));
         this.displayOrientation.addEventListener('change', (e) => this.updateOrientation(e));
+
+        // Sticky Config
         window.addEventListener('scroll', (e) => this.makeSticky(e));
     }
 
