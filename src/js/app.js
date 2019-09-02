@@ -81,7 +81,7 @@ class MarbleMachine {
 
     displayResult(numResults) {
         this.resultMessage.style.display = 'block';
-        this.resultMessage.innerText = `Generated ${numResults} sequences.`;
+        this.resultMessage.innerText = `Generated ${numResults} sequence${numResults > 1 ? 's' : ''}.`;
     }
 
     toggleConfig() {

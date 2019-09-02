@@ -87,6 +87,7 @@ input[type='number'] {
     padding: 8px 5px;
     z-index: 2;
     position: relative;
+    font-size: 16px;
     background: transparent; }
   .g-forms__select::after {
     top: 0;
@@ -140,6 +141,7 @@ input[type='number'] {
     color: white;
     border: none;
     cursor: pointer;
+    margin: 0;
     padding: 20px;
     display: -webkit-box;
     display: -ms-flexbox;
