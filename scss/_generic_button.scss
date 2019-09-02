@@ -1,0 +1,14 @@
+.g-btn {
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 6px 10px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    border-radius: 3px;
+    background-color: rgb(39, 109, 194);
+
+    &:hover {
+        background-color: darken(rgb(39, 109, 194), 10%);
+    }
+}

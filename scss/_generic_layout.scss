@@ -1,0 +1,29 @@
+.g-layout__wrap {
+    @media (min-width: 768px) {
+        display: flex;
+        position: relative;
+    }
+}
+
+.g-layout__sidebar {
+    padding: 20px;
+    z-index: 2;
+    position: relative;
+    border-bottom: 2px solid rgb(204, 204, 204);
+    background-color: rgb(248, 248, 248);
+
+    @media (min-width: 768px) {
+        width: 50%;
+        height: 100%;
+        max-width: 550px;
+        border-right: 2px solid rgb(204, 204, 204);
+        border-bottom: none;
+    }
+}
+
+.g-layout__main {
+    @media (min-width: 768px) {
+        flex: 1 1 0%;
+        width: 50%;
+    }
+}

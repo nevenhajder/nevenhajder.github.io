@@ -1,0 +1,61 @@
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type='number'] {
+    border: 1px solid rgb(204, 204, 204);
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 2px;
+
+    &.error {
+        color: inherit;
+        border-color: red;
+    }
+}
+
+.g-forms__selectWrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    label {
+        width: 150px;
+    }
+}
+
+.g-forms__select {
+    width: 100%;
+    border: 1px solid rgb(204, 204, 204);
+    position: relative;
+    border-radius: 2px;
+    background-color: white;
+
+    select {
+        width: 100%;
+        height: 100%;
+        border: none;
+        padding: 8px 5px;
+        z-index: 2;
+        position: relative;
+        background: transparent;
+    }
+
+    &::after {
+        top: 0;
+        right: 0;
+        width: 25px;
+        color: rgb(136, 136, 136);
+        height: 100%;
+        content: '\f078';
+        display: block;
+        z-index: 1;
+        position: absolute;
+        font-size: 14px;
+        text-align: center;
+        line-height: 34px;
+        font-family: FontAwesome;
+        background-color: white;
+    }
+}
