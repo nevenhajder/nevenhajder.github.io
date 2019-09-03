@@ -21,12 +21,14 @@ select {
 select::-ms-expand {
   display: none; }
 
-@media (min-width: 768px) {
-  .g-layout__wrap {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    position: relative; } }
+.g-layout__wrap {
+  overflow: hidden; }
+  @media (min-width: 768px) {
+    .g-layout__wrap {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      position: relative; } }
 
 .g-layout__sidebar {
   padding: 20px;
@@ -47,7 +49,8 @@ select::-ms-expand {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
-    width: 50%; } }
+    width: 50%;
+    min-width: 0; } }
 
 label {
   display: block;
@@ -58,7 +61,9 @@ input[type='number'] {
   width: 65px;
   padding: 5px;
   font-size: 16px;
-  border-radius: 2px; }
+  line-height: 1;
+  border-radius: 2px;
+  -moz-appearance: textfield; }
   input[type='number'].error {
     color: inherit;
     border-color: red; }
@@ -105,15 +110,27 @@ input[type='number'] {
     font-family: FontAwesome;
     background-color: white; }
 
+.g-forms__error {
+  color: red;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease; }
+  .g-forms__error.visible {
+    opacity: 1;
+    visibility: visible; }
+
 .g-btn {
   color: white;
   cursor: pointer;
   border: none;
-  padding: 6px 10px;
+  padding: 7px 10px;
   font-size: 16px;
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  line-height: 1;
   border-radius: 3px;
   background-color: #276dc2; }
   .g-btn:hover {
@@ -121,9 +138,7 @@ input[type='number'] {
 
 .c-config {
   z-index: 1;
-  position: relative;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); }
+  position: relative; }
 
 .c-config.sticky {
   top: 0;
@@ -187,6 +202,8 @@ input[type='number'] {
   -o-transition: transform 0.25s ease;
   transition: transform 0.25s ease;
   transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
   background-color: #333333; }
   .c-config__drawer.open {
     -webkit-transform: translateY(0);
@@ -196,15 +213,13 @@ input[type='number'] {
     .c-config__drawer {
       display: -webkit-box;
       display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-      justify-content: space-between; } }
+      display: flex; } }
 
 .c-config__size {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  max-width: 500px;
   margin-bottom: 20px; }
   .c-config__size label {
     width: 150px; }
@@ -214,11 +229,13 @@ input[type='number'] {
       -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
       order: 2;
-      margin-bottom: 0; } }
+      padding-top: 5px; } }
 
 @media (min-width: 1100px) {
   .c-config__style {
-    width: 47.5%; } }
+    width: 47.5%;
+    max-width: 500px;
+    margin-right: 5%; } }
 
 .c-range {
   width: 100%; }
@@ -233,10 +250,9 @@ input[type='number'] {
   justify-content: space-between; }
 
 input[type='range'] {
-  height: 26px;
   -webkit-appearance: none;
-  margin: 0 0 10px;
   width: 100%;
+  border-radius: 50px;
   background-color: transparent; }
 
 input[type='range']:focus {
@@ -244,76 +260,66 @@ input[type='range']:focus {
 
 input[type='range']::-webkit-slider-runnable-track {
   width: 100%;
-  height: 10px;
+  height: 5px;
   cursor: pointer;
-  animate: 0.2s;
-  -webkit-box-shadow: 0px 0px 0px #000000;
-  box-shadow: 0px 0px 0px #000000;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   background: #ffffff;
   border-radius: 50px;
   border: 1px solid #cccccc; }
 
 input[type='range']::-webkit-slider-thumb {
-  -webkit-box-shadow: 0px 0px 0px #000000;
-  box-shadow: 0px 0px 0px #000000;
-  border: 0px solid #000000;
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
   border-radius: 50px;
   background: #6ca6ec;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -5.5px; }
+  margin-top: -7px; }
 
 input[type='range']:focus::-webkit-slider-runnable-track {
   background: #ffffff; }
 
 input[type='range']::-moz-range-track {
   width: 100%;
-  height: 10px;
+  height: 8.4px;
   cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 0px 0px 0px #000000;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
   background: #ffffff;
-  border-radius: 50px;
+  border-radius: 25px;
   border: 1px solid #cccccc; }
 
 input[type='range']::-moz-range-thumb {
-  box-shadow: 0px 0px 0px #000000;
-  border: 0px solid #000000;
-  height: 20px;
-  width: 20px;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(13, 13, 13, 0.06);
+  border: 10px solid #6ca6ec;
+  height: 0px;
+  width: 0px;
   border-radius: 50px;
-  background: #6ca6ec;
+  background: #ffffff;
   cursor: pointer; }
 
 input[type='range']::-ms-track {
   width: 100%;
-  height: 10px;
+  height: 5px;
   cursor: pointer;
-  animate: 0.2s;
   background: transparent;
   border-color: transparent;
-  color: transparent; }
+  color: transparent;
+  border-width: 6px 0; }
 
 input[type='range']::-ms-fill-lower {
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 100px;
-  box-shadow: 0px 0px 0px #000000; }
+  background: #fff;
+  border-radius: 50px; }
 
 input[type='range']::-ms-fill-upper {
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 100px;
-  box-shadow: 0px 0px 0px #000000; }
+  background: #fff;
+  border-radius: 50px; }
 
 input[type='range']::-ms-thumb {
-  margin-top: 1px;
-  box-shadow: 0px 0px 0px #000000;
-  border: 0px solid #000000;
-  height: 20px;
-  width: 20px;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(13, 13, 13, 0.06);
+  border: none;
+  width: 16px;
+  height: 16px;
   border-radius: 50px;
   background: #6ca6ec;
   cursor: pointer; }
@@ -324,32 +330,46 @@ input[type='range']:focus::-ms-fill-lower {
 input[type='range']:focus::-ms-fill-upper {
   background: #ffffff; }
 
+.c-marbles__wrap {
+  overflow: auto; }
+  @media (min-width: 768px) {
+    .c-marbles__wrap {
+      height: calc(100% - 62px);
+      position: relative; } }
+
 .c-marbles {
-  padding: 20px;
-  overflow: scroll; }
+  width: 100%;
+  height: 100%;
+  padding: 20px; }
   @media (min-width: 768px) {
     .c-marbles {
-      height: calc(100% - 62px);
-      overflow: auto;
-      position: relative; } }
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; } }
 
 .c-marbles__row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
 
-.c-marbles[data-marbleSize='20'] .c-marble {
+.c-marbles.twenty .c-marble {
   width: 20px;
   height: 20px;
   margin: 0 5px 5px 0;
   border-width: 2px; }
 
-.c-marbles[data-marbleSize='40'] .c-marble {
+.c-marbles.forty .c-marble {
   width: 40px;
   height: 40px;
   margin: 0 10px 10px 0; }
 
-.c-marbles[data-marbleSize='60'] .c-marble {
+.c-marbles.sixty .c-marble {
   width: 60px;
   height: 60px;
   margin: 0 15px 15px 0;
@@ -358,10 +378,21 @@ input[type='range']:focus::-ms-fill-upper {
 .c-marbles.outline .c-marble {
   background-color: white; }
 
+.c-marbles.row {
+  display: block; }
+
 .c-marbles.column {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start; }
   .c-marbles.column .c-marbles__row {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -370,16 +401,6 @@ input[type='range']:focus::-ms-fill-upper {
 
 .c-marbles__instructions {
   text-align: center; }
-  @media (min-width: 768px) {
-    .c-marbles__instructions {
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      padding: 0 20px;
-      position: absolute;
-      -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%); } }
 
 .c-marble {
   -webkit-box-flex: 0;

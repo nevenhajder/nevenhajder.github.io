@@ -1,4 +1,6 @@
 .g-layout__wrap {
+    overflow: hidden;
+
     @media (min-width: 768px) {
         display: flex;
         position: relative;
@@ -25,5 +27,6 @@
     @media (min-width: 768px) {
         flex: 1 1 0%;
         width: 50%;
+        min-width: 0; // Firefox fix
     }
 }

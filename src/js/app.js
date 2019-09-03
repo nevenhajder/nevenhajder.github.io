@@ -4,7 +4,6 @@ class MarbleMachine {
         this.marbleSequences = [];
         this.slider = document.querySelector('.js-sizeSlider');
         this.numField = document.querySelector('.js-numColors');
-        this.numColors = 0;
         this.config = document.querySelector('.js-config');
         this.configToggle = document.querySelector('.js-configToggle');
         this.configDrawer = document.querySelector('.js-configDrawer');
@@ -14,18 +13,17 @@ class MarbleMachine {
         this.marbleContainer = document.querySelector('.js-marbleContainer');
         this.marbleStyle = document.querySelector('.js-marbleStyle');
         this.displayOrientation = document.querySelector('.js-displayOrientation');
+        this.currentOrientation = 'row';
 
-
-        // Events
         this.numField.addEventListener('keyup', (e) => {
             if (e.keyCode === 13) {
                 this.generateMarbles();
             }
         });
-        this.btnGenerate.addEventListener('click', () => this.generateMarbles());
 
+        this.btnGenerate.addEventListener('click', () => this.generateMarbles());
         this.configToggle.addEventListener('click', () => this.toggleConfig());
-        this.slider.addEventListener('change', (e) => (this.marbleContainer.attributes['data-marblesize'].value = e.target.value));
+        this.slider.addEventListener('change', (e) => this.updateMarbleSize(e));
         this.marbleStyle.addEventListener('change', (e) => this.updateMarbleStyle(e));
         this.displayOrientation.addEventListener('change', (e) => this.updateOrientation(e));
 
@@ -51,17 +49,19 @@ class MarbleMachine {
     }
 
     generateMarbles = () => {
-        this.numColors = this.numField.value;
-        if (this.numColors > 0 && this.numColors < 6) {
+        let numColors = this.numField.value;
+        numColors = this.numField.value;
+
+        if (numColors > 0 && numColors < 6) {
             this.numField.classList.remove('error');
-            this.errorMessage.style.display = "none";
+            this.errorMessage.classList.remove('visible');
             this.marbleSequences = [];
-            this.getMarbles(this.COLORS.slice(0, this.numColors));
+            this.getMarbles(this.COLORS.slice(0, numColors));
             this.displayMarbles(this.marbleSequences);
             this.displayResult(this.marbleSequences.length);
         } else {
             this.numField.classList.add('error');
-            this.errorMessage.style.display = 'block';
+            this.errorMessage.classList.add('visible');
             this.resultMessage.style.display = 'none';
         }
     };
@@ -77,6 +77,7 @@ class MarbleMachine {
         });
 
         this.marbleContainer.innerHTML = allMarbles;
+        this.setOrientation();
     }
 
     displayResult(numResults) {
@@ -97,12 +98,43 @@ class MarbleMachine {
         }
     }
 
-    updateOrientation(e) {
-        if (e.target.value == 'column') {
+    updateMarbleSize(e) {
+        this.marbleContainer.classList.remove('twenty');
+        this.marbleContainer.classList.remove('forty');
+        this.marbleContainer.classList.remove('sixty');
+
+        let size = 'forty';
+        switch (e.target.value) {
+            case '20':
+                size = 'twenty';
+                break;
+            case '40':
+                size = 'forty';
+                break;
+            case '60':
+                size = 'sixty';
+                break;
+        }
+        this.marbleContainer.classList.add(size);
+    }
+
+    getOrientation(e) {
+        this.currentOrientation = e.target.value;
+    }
+
+    setOrientation() {
+        if (this.currentOrientation == 'column') {
+            this.marbleContainer.classList.remove('row');
             this.marbleContainer.classList.add('column');
         } else {
+            this.marbleContainer.classList.add('row');
             this.marbleContainer.classList.remove('column');
         }
+    }
+
+    updateOrientation(e) {
+        this.getOrientation(e);
+        this.setOrientation();
     }
 
     makeSticky(e) {

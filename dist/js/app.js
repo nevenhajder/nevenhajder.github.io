@@ -49,15 +49,17 @@ var MarbleMachine =
             });
 
             _defineProperty(this, "generateMarbles", function () {
-                _this.numColors = _this.numField.value;
+                var numColors = _this.numField.value;
+                numColors = _this.numField.value;
 
-                if (_this.numColors > 0 && _this.numColors < 6) {
+                if (numColors > 0 && numColors < 6) {
                     _this.numField.classList.remove('error');
 
-                    _this.errorMessage.style.display = "none";
+                    _this.errorMessage.classList.remove('visible');
+
                     _this.marbleSequences = [];
 
-                    _this.getMarbles(_this.COLORS.slice(0, _this.numColors));
+                    _this.getMarbles(_this.COLORS.slice(0, numColors));
 
                     _this.displayMarbles(_this.marbleSequences);
 
@@ -65,7 +67,8 @@ var MarbleMachine =
                 } else {
                     _this.numField.classList.add('error');
 
-                    _this.errorMessage.style.display = 'block';
+                    _this.errorMessage.classList.add('visible');
+
                     _this.resultMessage.style.display = 'none';
                 }
             });
@@ -81,13 +84,14 @@ var MarbleMachine =
                     allMarbles += marbleRow;
                 });
                 _this.marbleContainer.innerHTML = allMarbles;
+
+                _this.setOrientation();
             });
 
             this.COLORS = ['blue', 'green', 'red', 'yellow', 'purple'];
             this.marbleSequences = [];
             this.slider = document.querySelector('.js-sizeSlider');
             this.numField = document.querySelector('.js-numColors');
-            this.numColors = 0;
             this.config = document.querySelector('.js-config');
             this.configToggle = document.querySelector('.js-configToggle');
             this.configDrawer = document.querySelector('.js-configDrawer');
@@ -96,8 +100,8 @@ var MarbleMachine =
             this.resultMessage = document.querySelector('.js-resultMessage');
             this.marbleContainer = document.querySelector('.js-marbleContainer');
             this.marbleStyle = document.querySelector('.js-marbleStyle');
-            this.displayOrientation = document.querySelector('.js-displayOrientation'); // Events
-
+            this.displayOrientation = document.querySelector('.js-displayOrientation');
+            this.currentOrientation = 'row';
             this.numField.addEventListener('keyup', function (e) {
                 if (e.keyCode === 13) {
                     _this.generateMarbles();
@@ -110,7 +114,7 @@ var MarbleMachine =
                 return _this.toggleConfig();
             });
             this.slider.addEventListener('change', function (e) {
-                return _this.marbleContainer.attributes['data-marblesize'].value = e.target.value;
+                return _this.updateMarbleSize(e);
             });
             this.marbleStyle.addEventListener('change', function (e) {
                 return _this.updateMarbleStyle(e);
@@ -128,7 +132,7 @@ var MarbleMachine =
             key: "displayResult",
             value: function displayResult(numResults) {
                 this.resultMessage.style.display = 'block';
-                this.resultMessage.innerText = "Generated ".concat(numResults, " sequences.");
+                this.resultMessage.innerText = "Generated ".concat(numResults, " sequence").concat(numResults > 1 ? 's' : '', ".");
             }
         }, {
             key: "toggleConfig",
@@ -146,13 +150,50 @@ var MarbleMachine =
                 }
             }
         }, {
-            key: "updateOrientation",
-            value: function updateOrientation(e) {
-                if (e.target.value == 'column') {
+            key: "updateMarbleSize",
+            value: function updateMarbleSize(e) {
+                this.marbleContainer.classList.remove('twenty');
+                this.marbleContainer.classList.remove('forty');
+                this.marbleContainer.classList.remove('sixty');
+                var size = 'forty';
+
+                switch (e.target.value) {
+                    case '20':
+                        size = 'twenty';
+                        break;
+
+                    case '40':
+                        size = 'forty';
+                        break;
+
+                    case '60':
+                        size = 'sixty';
+                        break;
+                }
+
+                this.marbleContainer.classList.add(size);
+            }
+        }, {
+            key: "getOrientation",
+            value: function getOrientation(e) {
+                this.currentOrientation = e.target.value;
+            }
+        }, {
+            key: "setOrientation",
+            value: function setOrientation() {
+                if (this.currentOrientation == 'column') {
+                    this.marbleContainer.classList.remove('row');
                     this.marbleContainer.classList.add('column');
                 } else {
+                    this.marbleContainer.classList.add('row');
                     this.marbleContainer.classList.remove('column');
                 }
+            }
+        }, {
+            key: "updateOrientation",
+            value: function updateOrientation(e) {
+                this.getOrientation(e);
+                this.setOrientation();
             }
         }, {
             key: "makeSticky",

@@ -1,11 +1,21 @@
-.c-marbles {
-    padding: 20px;
-    overflow: scroll;
+.c-marbles__wrap {
+    overflow: auto;
 
     @media (min-width: 768px) {
         height: calc(100% - 62px);
-        overflow: auto;
         position: relative;
+    }
+}
+
+.c-marbles {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    @media (min-width: 768px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -13,7 +23,7 @@
     display: flex;
 }
 
-.c-marbles[data-marbleSize='20'] {
+.c-marbles.twenty {
     .c-marble {
         width: 20px;
         height: 20px;
@@ -22,7 +32,7 @@
     }
 }
 
-.c-marbles[data-marbleSize='40'] {
+.c-marbles.forty {
     .c-marble {
         width: 40px;
         height: 40px;
@@ -30,7 +40,7 @@
     }
 }
 
-.c-marbles[data-marbleSize='60'] {
+.c-marbles.sixty {
     .c-marble {
         width: 60px;
         height: 60px;
@@ -45,8 +55,15 @@
     }
 }
 
+.c-marbles.row {
+    display: block;
+}
+
 .c-marbles.column {
     display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
 
     .c-marbles__row {
         flex-direction: column;
@@ -55,15 +72,6 @@
 
 .c-marbles__instructions {
     text-align: center;
-
-    @media (min-width: 768px) {
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        padding: 0 20px;
-        position: absolute;
-        transform: translate(-50%, -50%);
-    }
 }
 
 .c-marble {

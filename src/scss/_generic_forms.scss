@@ -8,7 +8,9 @@ input[type='number'] {
     width: 65px;
     padding: 5px;
     font-size: 16px;
+    line-height: 1;
     border-radius: 2px;
+    -moz-appearance: textfield;
 
     &.error {
         color: inherit;
@@ -59,5 +61,17 @@ input[type='number'] {
         line-height: 34px;
         font-family: FontAwesome;
         background-color: white;
+    }
+}
+
+.g-forms__error {
+    color: red;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
     }
 }
