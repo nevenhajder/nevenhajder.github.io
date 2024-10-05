@@ -1,82 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Marble Machine</title>
-        <link rel="stylesheet" href="./dist/css/font-awesome-4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="./dist/css/style.css" />
-    </head>
-    <body class="g-layout__wrap">
-        <div class="g-layout__sidebar">
-            <h1>Marble sequence generator</h1>
-            <h2>Generate some marbles</h2>
-            <p>
-                Type a number below and click "generate marbles" to create a sequence.
-            </p>
-
-            <label for="numColors">Number of colours:</label>
-            <input type="number" min="1" max="5" class="js-numColors" />
-            <button class="g-btn js-generate">Generate marbles</button>
-            <p class="g-forms__error js-errorMessage">
-                You need to enter a value between 1 and 5.
-            </p>
-            <h2>Result</h2>
-            <p class="js-resultMessage"></p>
-        </div>
-
-        <div class="g-layout__main">
-            <div class="g-layout__config c-config js-config">
-                <h3 class="c-config__toggle">
-                    <button class="js-configToggle">
-                        Configuration settings
-                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                </h3>
-                <div class="c-config__drawer js-configDrawer">
-                    <div class="c-config__size">
-                        <label for="marbleSize">Marble Size</label>
-                        <div class="c-range">
-                            <input type="range" min="20" max="60" step="20" class="js-sizeSlider" />
-                            <div class="c-range__labels">
-                                <span>Small<br />20px</span>
-                                <span>Medium<br />40px</span>
-                                <span>Large<br />60px</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-config__style">
-                        <div class="g-forms__selectWrap">
-                            <label for="marbleStyle">Marble style</label>
-                            <div class="g-forms__select">
-                                <select name="marbleStyle" id="marbleStyle" class="js-marbleStyle">
-                                    <option value="fill">Fill</option>
-                                    <option value="outline">Outline</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="g-forms__selectWrap">
-                            <label for="display">Display as</label>
-                            <div class="g-forms__select">
-                                <select name="display" id="display" class="js-displayOrientation">
-                                    <option value="row">Row</option>
-                                    <option value="column">Column</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="c-marbles__wrap">
-                <div class="c-marbles js-marbleContainer forty">
-                    <p class="c-marbles__instructions">
-                        Enter the number of colours to generate marbles.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <script src="./dist/js/app.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neven Hajder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="p-4 py-6 mb-6 text-center">
+      <h1 class="text-3xl mb-4">Neven's Projects</h1>
+    </header>
+    <ul class="list-none m-auto grid gap-6 px-4 sm:grid-cols-3 max-w-screen-lg">
+      <li>
+        <a
+          href="./projects/abacus/index.html"
+          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+        >
+          <img
+            class="block border-solid border-b border-slate-200 mb-2"
+            src="./images/abacus.jpg"
+            alt=""
+          />
+          <h3 class="text-center text-xl">JS Abacus</h3>
+          <p class="p-4 pt-1">
+            My first JavaScript project when I was learning web development.
+            This was a really fun challenge at the time because it wasn't just
+            another course or tutorial. Since then I've gone back to re-write it
+            in TypeScript and make the code more modular. Looking back at this
+            code makes me appreciate JSX a lot more.
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          href="./projects/front-end-challenge/index.html"
+          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+        >
+          <img
+            class="block border-solid border-b border-slate-200 mb-2"
+            src="./images/marbles.jpg"
+            alt=""
+          />
+          <h3 class="text-center text-xl">Front End Challenge</h3>
+          <p class="p-4 pt-1">
+            This project was a take-home challenge as part of an interview
+            process. Given designs and requirements, I had to implement the
+            permutations algorithm and build this small, responsive application.
+            After I joined the company, I learned that many interviewees thought
+            the challenge was too difficult so it was replaced with an easier
+            one.
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          href="./projects/carousel/index.html"
+          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+        >
+          <img
+            class="block border-solid border-b border-slate-200 mb-2"
+            src="./images/carousel.jpg"
+            alt=""
+          />
+          <h3 class="text-center text-xl">Carousel</h3>
+          <p class="p-4 pt-1">
+            I wanted to practice what I learned in a course on Treehouse, so I
+            built this rotating carousel. The user can rotate the carousel and
+            turn over the individual cards, with some custom bezier curves for
+            the animations to create a smooth experience.
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          href="./projects/pokemon/index.html"
+          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+        >
+          <img
+            class="block border-solid border-b border-slate-200 mb-2"
+            src="./images/pokemon.jpg"
+            alt=""
+          />
+          <h3 class="text-center text-xl">Pokémon</h3>
+          <p class="p-4 pt-1">
+            This is a small React app which calls PokéAPI to fetch and display
+            data. I've experimented with implementing a cache,
+            <code>useReducer</code>, <code>fetch</code> vs <code>axios</code>,
+            and refactored the original app to TypeScript.
+          </p>
+        </a>
+      </li>
+      <li>
+        <a
+          href="./projects/game/index.html"
+          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+        >
+          <img
+            class="block border-solid border-b border-slate-200 mb-2"
+            src="./images/html-game.jpg"
+            alt=""
+          />
+          <h3 class="text-center text-xl">HTML Game</h3>
+          <p class="p-4 pt-1">
+            To earn my first job as a Web Developer I built a portfolio site
+            which included this game. I got a chance to work with
+            <code>requestAnimationFrame</code> and had fun with collision
+            detection. This gave me a small glimpse into the world of game
+            development.
+          </p>
+        </a>
+      </li>
+    </ul>
+    <footer class="flex gap-4 items-center justify-center py-8 px-4 mt-12">
+      <a href="https://linkedin.com/in/nevenhajder" target="_blank"
+        ><img src="./images/linkedin.png" alt="LinkedIn logo"
+      /></a>
+      <a href="https://github.com/nevenhajder" target="_blank"
+        ><img src="./images/github.png" alt="GitHub logo"
+      /></a>
+    </footer>
+  </body>
 </html>
