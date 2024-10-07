@@ -1,0 +1,231 @@
+
+/*------------------------------
+  General Styles
+------------------------------*/
+html {
+  /* Setting a base of 10px so mental math is easier */
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font: 1.6rem/1.5 "Open Sans", Helvetica, sans-serif;
+  background: #fff url("../images/swirl_pattern.png");
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.title {
+  font: 4.8rem/1 "Petit Formal Script", cursive;
+  text-align: center;
+  text-shadow: 0 0 10px rgb(108,123,139);
+  margin-bottom: 0;
+}
+
+.carousel-container {
+  position: relative;
+  width: 320px;
+  height: 510px;
+  margin: 1rem auto 2rem;
+
+  -webkit-perspective: 1000px;
+}
+
+.carousel-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  -webkit-transition: -webkit-transform 0.9s cubic-bezier(0.17,0.67,0.34,1.12);
+  -webkit-transform-style: preserve-3d;
+}
+
+.card-wrap {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 300px;
+  height: 490px;
+
+  transition: -webkit-transform 0.9s cubic-bezier(0.17,0.67,0.34,1.12);
+  -webkit-transform-style: preserve-3d;
+}
+
+.inner-card-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  transition: -webkit-transform 1s ease-out;
+  -webkit-transform-style: preserve-3d;
+}
+/*------------------------------
+  Portrait (front) Styles
+------------------------------*/
+.portrait-wrap, .description-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: rgb(0,0,0) url("../images/subtle_carbon/subtle_carbon.png");
+
+  -webkit-backface-visibility: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+.portrait-wrap {
+  z-index: 1;
+}
+
+.portrait-wrap img {
+  display: block;
+  width: 90%;
+  height: 400px;
+  margin: 1rem auto 1.5rem;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.caption {
+  font: 3.6rem/1 "Petit Formal Script", cursive;
+  margin: 0;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 4px rgb(0,0,0);
+}
+
+
+/*------------------------------
+  Description (back) Styles
+------------------------------*/
+.description-wrap {
+  overflow: scroll;
+  color: white;
+  -webkit-transform: rotateY(-180deg);
+}
+
+.description {
+  padding: 1rem 2rem;
+}
+
+.description-wrap blockquote {
+  position: relative;
+  margin-left: 4rem;
+  margin-right: 3rem;
+  font-size: 2.1rem;
+  font-style: italic;
+}
+
+/* Blockquote floating shadow */
+.description-wrap blockquote:after {
+  position: absolute;
+  content: '';
+  left: 5%;
+  bottom: -2rem;
+  height: 5px;
+  width: 80%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 80%);
+}
+
+/* Hanging quote position */
+.description-wrap .fa-quote-left {
+  text-indent: -2.9rem;
+}
+
+/*------------------------------
+  Button Controls
+------------------------------*/
+.controls {
+  overflow: visible;
+  width: 25rem;
+  margin: 1rem auto 2rem;
+  text-align: center;
+}
+
+.controls button {
+  font-size: 2.4rem;
+  padding: 0;
+  height: 5rem;
+  color: white;
+  border: none;
+  background: black linear-gradient(to bottom, #45484d 0%,#000 100%);
+  transition: all 0.15s ease-out;
+}
+
+#previous, #next {
+  width: 5rem;
+  border-radius: 2.5rem;
+}
+
+#previous {
+  float: left;
+  text-indent: -0.25rem;
+}
+
+#flip {
+  width: 10rem;
+  border-radius: 10px;
+}
+
+#next {
+  float: right;
+  text-indent: 0.25rem;
+}
+
+#previous:hover {
+  box-shadow: -4px 0 0 tomato;
+}
+
+#flip:hover {
+  box-shadow: 0 2px 0 tomato;
+}
+
+#next:hover {
+  box-shadow: 4px 0 0 tomato;
+}
+
+#previous:active {
+  -webkit-transform: translateX(-2px);
+  box-shadow: none;
+}
+
+#flip:active {
+  -webkit-transform: translateY(2px);
+  box-shadow: none;
+}
+
+#next:active {
+  -webkit-transform: translateX(2px);
+  box-shadow: none;
+}
+
+/*------------------------------
+  Carousel Setup
+------------------------------*/
+/* Pushes the entire carousel back to correct for the pixelation problem, when each side is
+   translated along the Z-axis */
+.carousel-wrap {
+  -webkit-transform: translateZ(-277px);
+}
+/* Initializes the card placement */
+.carousel-wrap .card-wrap:nth-child(1) {
+  -webkit-transform: rotateY(0) translateZ(277px);
+}
+.carousel-wrap .card-wrap:nth-child(2) {
+  -webkit-transform: rotateY(60deg) translateZ(277px);
+}
+.carousel-wrap .card-wrap:nth-child(3) {
+  -webkit-transform: rotateY(120deg) translateZ(277px);
+}
+.carousel-wrap .card-wrap:nth-child(4) {
+  -webkit-transform: rotateY(180deg) translateZ(277px);
+}
+.carousel-wrap .card-wrap:nth-child(5) {
+  -webkit-transform: rotateY(240deg) translateZ(277px);
+}
+.carousel-wrap .card-wrap:nth-child(6) {
+  -webkit-transform: rotateY(300deg) translateZ(277px);
+}
