@@ -1,0 +1,198 @@
+.abacus-wrap {
+  margin: 32px auto;
+  display: block;
+  max-width: 900px;
+  position: relative;
+  padding-top: 20px;
+}
+
+.abacus-heading {
+  margin: 0.75em auto;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: em(36px);
+}
+
+.row1, .row10, .row100, .row1000, .row10000 {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  margin-bottom: 30px;
+}
+.row1::before, .row10::before, .row100::before, .row1000::before, .row10000::before {
+  top: 50%;
+  width: 100%;
+  height: 4px;
+  content: "";
+  z-index: -1;
+  position: absolute;
+  transform: translateY(-50%);
+  background-color: #f0b7a1;
+  background-image: linear-gradient(top, #f0b7a1 0%, #8c3310 50%, #752201 51%, #bf6e4e 100%);
+}
+
+.display-wrap {
+  width: 65%;
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+/*
+    Styles for Abacus Components
+*/
+.bead {
+  float: left;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin-right: 2px;
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform 750ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: transform 750ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  /* Remove right margin from last bead */
+}
+.bead:nth-of-type(1) {
+  background-color: #ed796d;
+  background-image: radial-gradient(center, ellipse cover, #ed796d 0%, #f85032 54%, #e73827 100%);
+  border: 1px solid rgba(220, 42, 24, 0.8);
+}
+.bead:nth-of-type(2) {
+  background-color: #ed796d;
+  background-image: radial-gradient(center, ellipse cover, #ed796d 0%, #f85032 54%, #e73827 100%);
+  border: 1px solid rgba(220, 42, 24, 0.8);
+}
+.bead:nth-of-type(3) {
+  background-color: #ed796d;
+  background-image: radial-gradient(center, ellipse cover, #ed796d 0%, #f85032 54%, #e73827 100%);
+  border: 1px solid rgba(220, 42, 24, 0.8);
+}
+.bead:nth-of-type(4) {
+  background-color: #ed796d;
+  background-image: radial-gradient(center, ellipse cover, #ed796d 0%, #f85032 54%, #e73827 100%);
+  border: 1px solid rgba(220, 42, 24, 0.8);
+}
+.bead:nth-of-type(5) {
+  background-color: #ed796d;
+  background-image: radial-gradient(center, ellipse cover, #ed796d 0%, #f85032 54%, #e73827 100%);
+  border: 1px solid rgba(220, 42, 24, 0.8);
+}
+.bead:nth-of-type(6) {
+  background-color: #4bb8f0;
+  background-image: radial-gradient(center, ellipse cover, #4bb8f0 18%, #3a8bc2 52%, #26558b 100%);
+  border: 1px solid rgba(33, 73, 119, 0.8);
+}
+.bead:nth-of-type(7) {
+  background-color: #4bb8f0;
+  background-image: radial-gradient(center, ellipse cover, #4bb8f0 18%, #3a8bc2 52%, #26558b 100%);
+  border: 1px solid rgba(33, 73, 119, 0.8);
+}
+.bead:nth-of-type(8) {
+  background-color: #4bb8f0;
+  background-image: radial-gradient(center, ellipse cover, #4bb8f0 18%, #3a8bc2 52%, #26558b 100%);
+  border: 1px solid rgba(33, 73, 119, 0.8);
+}
+.bead:nth-of-type(9) {
+  background-color: #4bb8f0;
+  background-image: radial-gradient(center, ellipse cover, #4bb8f0 18%, #3a8bc2 52%, #26558b 100%);
+  border: 1px solid rgba(33, 73, 119, 0.8);
+}
+.bead:nth-of-type(10) {
+  background-color: #4bb8f0;
+  background-image: radial-gradient(center, ellipse cover, #4bb8f0 18%, #3a8bc2 52%, #26558b 100%);
+  border: 1px solid rgba(33, 73, 119, 0.8);
+}
+.bead:nth-type-of(10) {
+  margin-right: 0;
+}
+
+.bead:focus {
+  outline: none;
+}
+
+.support-right, .support-left {
+  top: 0;
+  width: 20px;
+  height: 400px;
+  position: absolute;
+  background: url("../images/purty_wood.png") repeat-y;
+  border-radius: 5px;
+}
+
+.support-left {
+  left: -20px;
+}
+
+.support-right {
+  right: -19px;
+}
+
+/*
+    Number Display Styles
+*/
+/* Remove spinners from number input */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Specifically for Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.display-wrap button:active,
+.display-wrap button:focus {
+  outline: none;
+}
+
+/* Overwrite Bootstrap styles and customize */
+.numDisplay {
+  text-align: center;
+  font-size: 24px !important;
+  padding: 5px 10px !important;
+}
+
+/*
+    Media Queries
+*/
+@media (min-width: 320px) {
+  .bead {
+    width: 25px;
+    height: 25px;
+  }
+
+  .rail {
+    top: 11px;
+  }
+}
+@media (min-width: 600px) {
+  .bead {
+    width: 40px;
+    height: 40px;
+  }
+
+  .rail {
+    top: 18px;
+  }
+
+  .row1, .row10, .row100, .row1000, .row10000 {
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .abacus-heading {
+    margin: 0.75em auto 0;
+  }
+
+  .bead {
+    width: 55px;
+    height: 55px;
+  }
+
+  .rail {
+    top: 26px;
+  }
+}
+
+/*# sourceMappingURL=abacus.css.map */
