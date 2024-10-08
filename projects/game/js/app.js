@@ -24,7 +24,7 @@ APP.Enemy = function () {
 
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
-  this.sprite = "game/images/enemy-bug.png";
+  this.sprite = "./images/enemy-bug.png";
 
   /* Enemy's width and height for collision detection */
   this.width = 90;
@@ -78,7 +78,7 @@ APP.Player = function () {
   this.reset();
 
   /* Player sprite */
-  this.sprite = "game/images/char-boy.png";
+  this.sprite = "./images/char-boy.png";
 
   /* Player width and height for collision detection */
   this.width = 60;
