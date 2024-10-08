@@ -1,0 +1,14 @@
+.home__wrapper {
+  margin: auto;
+  padding: 2rem 1rem;
+  max-width: 1280px;
+}
+
+.home {
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+}
+
+.home:hover {
+  border-color: rgb(100 116 139 / 0.3);
+}

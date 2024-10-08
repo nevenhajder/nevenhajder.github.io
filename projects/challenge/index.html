@@ -1,82 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Marble Machine</title>
-        <link rel="stylesheet" href="challenge/css/font-awesome-4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="challenge/css/style.css" />
-    </head>
-    <body class="g-layout__wrap">
-        <div class="g-layout__sidebar">
-            <h1>Marble sequence generator</h1>
-            <h2>Generate some marbles</h2>
-            <p>
-                Type a number below and click "generate marbles" to create a sequence.
-            </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Marble Machine</title>
+    <link
+      rel="stylesheet"
+      href="challenge/css/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="challenge/css/style.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body class="g-layout__wrap">
+    <div class="g-layout__sidebar">
+      <a href="/" class="home">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="#000000"
+          version="1.1"
+          id="Capa_1"
+          width="32px"
+          height="32px"
+          viewBox="0 0 495.398 495.398"
+          xml:space="preserve"
+        >
+          <g>
+            <g>
+              <g>
+                <path
+                  d="M487.083,225.514l-75.08-75.08V63.704c0-15.682-12.708-28.391-28.413-28.391c-15.669,0-28.377,12.709-28.377,28.391     v29.941L299.31,37.74c-27.639-27.624-75.694-27.575-103.27,0.05L8.312,225.514c-11.082,11.104-11.082,29.071,0,40.158     c11.087,11.101,29.089,11.101,40.172,0l187.71-187.729c6.115-6.083,16.893-6.083,22.976-0.018l187.742,187.747     c5.567,5.551,12.825,8.312,20.081,8.312c7.271,0,14.541-2.764,20.091-8.312C498.17,254.586,498.17,236.619,487.083,225.514z"
+                />
+                <path
+                  d="M257.561,131.836c-5.454-5.451-14.285-5.451-19.723,0L72.712,296.913c-2.607,2.606-4.085,6.164-4.085,9.877v120.401     c0,28.253,22.908,51.16,51.16,51.16h81.754v-126.61h92.299v126.61h81.755c28.251,0,51.159-22.907,51.159-51.159V306.79     c0-3.713-1.465-7.271-4.085-9.877L257.561,131.836z"
+                />
+              </g>
+            </g>
+          </g>
+        </svg>
+      </a>
 
-            <label for="numColors">Number of colours:</label>
-            <input type="number" min="1" max="5" class="js-numColors" />
-            <button class="g-btn js-generate">Generate marbles</button>
-            <p class="g-forms__error js-errorMessage">
-                You need to enter a value between 1 and 5.
-            </p>
-            <h2>Result</h2>
-            <p class="js-resultMessage"></p>
-        </div>
+      <h1>Marble sequence generator</h1>
+      <h2>Generate some marbles</h2>
+      <p>
+        Type a number below and click "generate marbles" to create a sequence.
+      </p>
 
-        <div class="g-layout__main">
-            <div class="g-layout__config c-config js-config">
-                <h3 class="c-config__toggle">
-                    <button class="js-configToggle">
-                        Configuration settings
-                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                </h3>
-                <div class="c-config__drawer js-configDrawer">
-                    <div class="c-config__size">
-                        <label for="marbleSize">Marble Size</label>
-                        <div class="c-range">
-                            <input type="range" min="20" max="60" step="20" class="js-sizeSlider" />
-                            <div class="c-range__labels">
-                                <span>Small<br />20px</span>
-                                <span>Medium<br />40px</span>
-                                <span>Large<br />60px</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-config__style">
-                        <div class="g-forms__selectWrap">
-                            <label for="marbleStyle">Marble style</label>
-                            <div class="g-forms__select">
-                                <select name="marbleStyle" id="marbleStyle" class="js-marbleStyle">
-                                    <option value="fill">Fill</option>
-                                    <option value="outline">Outline</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="g-forms__selectWrap">
-                            <label for="display">Display as</label>
-                            <div class="g-forms__select">
-                                <select name="display" id="display" class="js-displayOrientation">
-                                    <option value="row">Row</option>
-                                    <option value="column">Column</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <label for="numColors">Number of colours:</label>
+      <input type="number" min="1" max="5" class="js-numColors" />
+      <button class="g-btn js-generate">Generate marbles</button>
+      <p class="g-forms__error js-errorMessage">
+        You need to enter a value between 1 and 5.
+      </p>
+      <h2>Result</h2>
+      <p class="js-resultMessage"></p>
+    </div>
+
+    <div class="g-layout__main">
+      <div class="g-layout__config c-config js-config">
+        <h3 class="c-config__toggle">
+          <button class="js-configToggle">
+            Configuration settings
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          </button>
+        </h3>
+        <div class="c-config__drawer js-configDrawer">
+          <div class="c-config__size">
+            <label for="marbleSize">Marble Size</label>
+            <div class="c-range">
+              <input
+                type="range"
+                min="20"
+                max="60"
+                step="20"
+                class="js-sizeSlider"
+              />
+              <div class="c-range__labels">
+                <span>Small<br />20px</span>
+                <span>Medium<br />40px</span>
+                <span>Large<br />60px</span>
+              </div>
             </div>
-            <div class="c-marbles__wrap">
-                <div class="c-marbles js-marbleContainer forty">
-                    <p class="c-marbles__instructions">
-                        Enter the number of colours to generate marbles.
-                    </p>
-                </div>
+          </div>
+          <div class="c-config__style">
+            <div class="g-forms__selectWrap">
+              <label for="marbleStyle">Marble style</label>
+              <div class="g-forms__select">
+                <select
+                  name="marbleStyle"
+                  id="marbleStyle"
+                  class="js-marbleStyle"
+                >
+                  <option value="fill">Fill</option>
+                  <option value="outline">Outline</option>
+                </select>
+              </div>
             </div>
+            <div class="g-forms__selectWrap">
+              <label for="display">Display as</label>
+              <div class="g-forms__select">
+                <select
+                  name="display"
+                  id="display"
+                  class="js-displayOrientation"
+                >
+                  <option value="row">Row</option>
+                  <option value="column">Column</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <script src="challenge/js/app.js"></script>
-    </body>
+      </div>
+      <div class="c-marbles__wrap">
+        <div class="c-marbles js-marbleContainer forty">
+          <p class="c-marbles__instructions">
+            Enter the number of colours to generate marbles.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="challenge/js/app.js"></script>
+  </body>
 </html>
