@@ -1,80 +1,73 @@
-/*jslint browser: true*/
-/*global $, jQuery, alert*/
+var main = function () {
+  "use strict";
 
+  const CAROUSEL = document.querySelector(".carousel-wrap");
+  let tranZ = 277;
+  let rotY = 0;
 
-var main = function() {
-    "use strict";
-    /* Add class fa-spin to #flip when user hovers */
-    $('#flip').hover(
-        function() {
-            $('#flip i').addClass('fa-spin');
-        },
-        function() {
-            $('#flip i').removeClass('fa-spin');
-        }
-    );
+  function handleClickNext() {
+    rotY -= 60;
 
-    /* Variables for carousel manipulation */
-    var carousel = $('.carousel-wrap'),
-        selectedCard = $('.selected > .inner-card-wrap'),
-        tranZ = 277,
-        rotY = 0;
+    CAROUSEL.style["-webkit-transform"] =
+      "translateZ(-" + tranZ + "px) rotateY(" + rotY + "deg)";
 
+    let selectedCard = document.querySelector(".selected");
+    selectedCard.classList.remove("selected");
 
-    /* Update .selected */
-    var selectNext = function() {
-        var $next = $('.selected').removeClass('selected').next('.card-wrap');
+    const nextCard = selectedCard.nextElementSibling;
 
-        if ($next.length) {
-            $next.addClass('selected');
-        } else {
-            $('.card-wrap:first-child').addClass('selected');
-        }
+    if (nextCard) {
+      nextCard.classList.add("selected");
+    } else {
+      document
+        .querySelector(".card-wrap:first-child")
+        .classList.add("selected");
+    }
+  }
 
-        selectedCard = $('.selected > .inner-card-wrap');
-    };
+  function handleClickPrevious() {
+    rotY += 60;
 
-    var selectPrev = function() {
-        var $prev = $('.selected').removeClass('selected').prev('.card-wrap');
+    CAROUSEL.style["-webkit-transform"] =
+      "translateZ(-" + tranZ + "px) rotateY(" + rotY + "deg)";
 
-        if ($prev.length) {
-            $prev.addClass('selected');
-        } else {
-            $('.card-wrap:last-child').addClass('selected');
-        }
+    let selectedCard = document.querySelector(".selected");
+    selectedCard.classList.remove("selected");
 
-        selectedCard = $('.selected > .inner-card-wrap');
-    };
+    const previousCard = selectedCard.previousElementSibling;
 
+    if (previousCard) {
+      previousCard.classList.add("selected");
+    } else {
+      document.querySelector(".card-wrap:last-child").classList.add("selected");
+    }
+  }
 
-    /* Rotate carousel on #next.click */
-    $('#next').on('click',
-        function() {
-            rotY -= 60;
-            carousel.css('-webkit-transform', 'translateZ(-' + tranZ + 'px) rotateY(' + rotY + 'deg)');
+  document.querySelector("#next").addEventListener("click", handleClickNext);
 
-            selectNext();
-        });
+  document
+    .querySelector("#previous")
+    .addEventListener("click", handleClickPrevious);
 
-    /* Rotate carousel on #previous.click */
-    $('#previous').on('click',
-        function() {
-            rotY += 60;
-            carousel.css('-webkit-transform', 'translateZ(-' + tranZ + 'px) rotateY(' + rotY + 'deg)');
+  document.querySelector("#flip").addEventListener("mouseenter", () => {
+    document.querySelector("#flip i").classList.add("fa-spin");
+  });
 
-            selectPrev();
-        });
+  document.querySelector("#flip").addEventListener("mouseleave", () => {
+    document.querySelector("#flip i").classList.remove("fa-spin");
+  });
 
+  document.querySelector("#flip").addEventListener("click", function () {
+    const selectedCard = document.querySelector(".selected > .inner-card-wrap");
 
-    /* Flip the card */
-    $('#flip').on('click',
-        function() {
-            if (selectedCard.hasClass('flipped')) {
-                selectedCard.css('-webkit-transform', 'rotateY(0)').toggleClass('flipped');
-            } else {
-                selectedCard.css('-webkit-transform', 'rotateY(180deg)').toggleClass('flipped');
-            }
-        });
+    if (selectedCard.classList.contains("flipped")) {
+      selectedCard.style["-webkit-transform"] = "rotateY(0)";
+    } else {
+      selectedCard.style["-webkit-transform"] = "rotateY(180deg)";
+    }
+
+    selectedCard.classList.toggle("flipped");
+  });
 };
 
 main();
