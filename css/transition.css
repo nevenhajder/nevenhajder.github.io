@@ -1,0 +1,4 @@
+/*Enable view-transitions on navigation*/
+@view-transition {
+  navigation: auto;
+}

@@ -1,2 +1,3 @@
 # nevenhajder.github.io
-testing
+
+A place to host some personal projects.
