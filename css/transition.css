@@ -2,3 +2,41 @@
 @view-transition {
   navigation: auto;
 }
+
+/*Custom animation for a page that "enters" the view*/
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/*Custom animation for a page that "exits" the view*/
+@keyframes exit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+::view-transition-new(root) {
+  animation: enter;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-duration: 300ms;
+}
+
+::view-transition-old(root) {
+  animation: exit;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-duration: 300ms;
+}
