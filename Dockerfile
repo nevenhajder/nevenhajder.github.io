@@ -9,9 +9,6 @@ COPY images ${NGINX_ROOT}/images
 COPY projects ${NGINX_ROOT}/projects
 COPY index.html ${NGINX_ROOT}/index.html
 
-# Is this required?
-# EXPOSE 80
-
 # Start the nginx server
 CMD ["nginx", "-g", "daemon off;"]
 
