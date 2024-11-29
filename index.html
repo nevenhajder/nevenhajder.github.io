@@ -7,15 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/transition.css" />
   </head>
-  <body>
-    <header class="p-4 py-6 mb-6 text-center">
+  <body class="dark:bg-zinc-900 dark:text-stone-200">
+    <header class="p-4 py-6 mb-6 text-center hover:text-green-200 dark:hover:text-red-500">
       <h1 class="text-3xl mb-4">Neven's Projects</h1>
     </header>
     <ul class="list-none m-auto grid gap-6 px-4 sm:grid-cols-3 max-w-screen-lg">
       <li>
         <a
           href="./projects/abacus/index.html"
-          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+          class="block border-solid border border-slate-200 rounded hover:shadow-lg hover:shadow-slate-500/30 dark:hover:shadow-slate-400/25 overflow-hidden"
         >
           <img
             class="block border-solid border-b border-slate-200 mb-2"
@@ -35,7 +35,7 @@
       <li>
         <a
           href="./projects/challenge/index.html"
-          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+          class="block border-solid border border-slate-200 rounded hover:shadow-lg hover:shadow-slate-500/30 dark:hover:shadow-slate-400/25 overflow-hidden"
         >
           <img
             class="block border-solid border-b border-slate-200 mb-2"
@@ -56,7 +56,7 @@
       <li>
         <a
           href="./projects/carousel/index.html"
-          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+          class="block border-solid border border-slate-200 rounded hover:shadow-lg hover:shadow-slate-500/30 dark:hover:shadow-slate-400/25 overflow-hidden"
         >
           <img
             class="block border-solid border-b border-slate-200 mb-2"
@@ -75,7 +75,7 @@
       <li>
         <a
           href="./projects/pokemon/index.html"
-          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+          class="block border-solid border border-slate-200 rounded hover:shadow-lg hover:shadow-slate-500/30 dark:hover:shadow-slate-400/25 overflow-hidden"
         >
           <img
             class="block border-solid border-b border-slate-200 mb-2"
@@ -94,7 +94,7 @@
       <li>
         <a
           href="./projects/game/index.html"
-          class="block border-solid border border-slate-200 rounded hover:shadow-md hover:drop-shadow-slate-500/30 overflow-hidden"
+          class="block border-solid border border-slate-200 rounded hover:shadow-lg hover:shadow-slate-500/30 dark:hover:shadow-slate-400/25 overflow-hidden"
         >
           <img
             class="block border-solid border-b border-slate-200 mb-2"
@@ -117,14 +117,24 @@
         href="https://linkedin.com/in/nevenhajder"
         target="_blank"
         class="block border-b-2 border-transparent pb-2 hover:border-slate-500/30"
-        ><img src="./images/linkedin.png" alt="LinkedIn logo"
-      /></a>
+        >
+        <picture>
+          <source srcset="./images/linkedin-white.png 1x, ./images/linkedin-white@2x.png 2x" media="(prefers-color-scheme: dark)">
+          <source srcset="./images/linkedin.png 1x, ./images/linkedin@2x.png 2x" media="(prefers-color-scheme: light)">
+          <img src="./images/linkedin.png" alt="LinkedIn logo" />
+        </picture>
+      </a>
       <a
         href="https://github.com/nevenhajder"
         target="_blank"
         class="block border-b-2 border-transparent pb-1 mb-1 hover:border-slate-500/30"
-        ><img src="./images/github.png" alt="GitHub logo"
-      /></a>
+        >
+        <picture>
+          <source srcset="./images/github-white.png 1x, ./images/github-white@2x.png 2x" media="(prefers-color-scheme: dark)">
+          <source srcset="./images/github.png 1x, ./images/github@2x.png 2x" media="(prefers-color-scheme: light)">
+          <img src="./images/github.png" alt="GitHub logo" />
+        </picture>
+      </a>
     </footer>
   </body>
 </html>
